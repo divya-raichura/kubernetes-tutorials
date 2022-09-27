@@ -1,0 +1,14 @@
+# goal is to be able to access our app on a port on the node which is the minikube node in our case 
+  
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  type: NodePort
+  ports:
+    - port: 80 # port on service
+      targetPort: 80 # port on pod
+      nodePort: 30004 # port on node(minikube node or worker node) on which app will be made accessible 
+  selector:
+    app: my-app  
